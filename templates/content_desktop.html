@@ -1,0 +1,122 @@
+<!--
+Copyright (C) 2023 musicnbrain.org
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://uploads-ssl.webflow.com/6011e54d61042f6e5b8cee51/601c4e57e3ad3723dd1c7547_Logo%2032x32.png"
+      rel="shortcut icon"
+      type="image/x-icon"
+    />
+    <title>Content</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        overflow: hidden;
+        height: 100vh;
+        width: 100vw;
+      }
+
+      .item {
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 1vh;
+        padding-bottom: 1vh;
+      }
+
+      .performer {
+        flex: 1;
+        padding-right: 1vw;
+        text-align: center;
+        line-height: 1;
+        font-size: 4vw;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+      }
+
+      .pieces {
+        flex: 4;
+        line-height: 1;
+        font-size: 3vw;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+
+      .piece {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 1vh;
+        padding-bottom: 1vh;
+      }
+
+      .title-block {
+        flex: 3;
+      }
+
+      .composer-block {
+        flex: 2;
+      }
+
+      .title {
+        text-align: left;
+      }
+
+      .indent-title {
+        text-align: left;
+        text-indent: 8vh;
+      }
+
+      .composer {
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    {% for item in data %}
+    <div class="item">
+      <div class="performer">{{item.performer}}</div>
+      <div class="pieces">
+        {% for piece in item.pieces %}
+        <div class="piece">
+          <div class="title-block">
+            {% for line in piece.title %} {% if line.startswith('\t') %}
+            <div class="indent-title">{{line}}</div>
+            {% else %}
+            <div class="title">{{line}}</div>
+            {% endif %} {% endfor %}
+          </div>
+          <div class="composer-block">
+            {% for line in piece.composer %}
+            <div class="composer">{{line}}</div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </body>
+</html>
