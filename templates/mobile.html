@@ -1,0 +1,85 @@
+<!--
+Copyright (C) 2023 musicnbrain.org
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://uploads-ssl.webflow.com/6011e54d61042f6e5b8cee51/601c4e57e3ad3723dd1c7547_Logo%2032x32.png"
+        rel="shortcut icon" type="image/x-icon" />
+    <title>Adaptive Booklet</title>
+    <script src="https://www.unpkg.com/jquery@3.7.0/dist/jquery.js"></script>
+    <script type="text/javascript" src="/turn.js"></script>
+    <link rel="stylesheet" type="text/css" href="/mobile.css" />
+</head>
+
+<body>
+    <div class="flipbook">
+        <!-- front page -->
+        {%- if front%}
+        <div class="front">
+            <div class="front-upper">
+                <div id="title">{{front.title}}</div>
+                <div id="subtitle">{{front.subtitle}}</div>
+            </div>
+            <div class="front-lower">
+                <div id="time">{{front.time}}</div>
+                <div id="location">{{front.location}}</div>
+                <div id="address">{{front.address}}</div>
+            </div>
+        </div>
+        {%- endif %}
+        {% for page in content %}
+        <div class="content"></div>
+        <div class="content">
+            {% for item in page %}
+            <div class="item">
+                <div class="performer">{{item.performer}}</div>
+                <div class="pieces">
+                    {% for piece in item.pieces %}
+                    <div class="piece">
+                        <div class="title-block">
+                            {% for line in piece.title %} {% if line.startswith('\t') %}
+                            <div class="indent-title">{{line}}</div>
+                            {% else %}
+                            <div class="title">{{line}}</div>
+                            {% endif %} {% endfor %}
+                        </div>
+                        <div class="composer-block">
+                            {% for line in piece.composer %}
+                            <div class="composer">{{line}}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+    <script type="text/javascript">
+        $(".flipbook").turn({
+            width: document.documentElement.clientWidth * 0.99 * 2,
+            height: document.documentElement.clientHeight * 0.98
+        });
+    </script>
+</body>
+
+</html>

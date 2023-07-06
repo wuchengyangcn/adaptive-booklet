@@ -1,0 +1,135 @@
+/* Copyright (C) 2023 musicnbrain.org
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>. */
+
+* {
+    overflow: hidden;
+}
+
+body {
+    background-color: #ccc;
+    margin: 1vh 1vw;
+    user-select: none;
+}
+
+.flipbook {
+    left: -99vw;
+}
+
+.content {
+    background-color: white;
+}
+
+.shadow {
+    transition: 0.1s;
+    box-shadow: 0 0 10px #333;
+}
+
+.front {
+    overflow: hidden;
+    background: url("https://cdn.pixabay.com/photo/2022/11/28/18/58/piano-7622920_1280.jpg")
+        fixed;
+    background-size: 100vw 100vh;
+}
+
+.front-upper {
+    position: absolute;
+    top: 5vh;
+    left: 0vw;
+    background-color: rgba(256, 256, 256, 0.8);
+}
+
+#title {
+    font-size: 22vw;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: left;
+}
+
+#subtitle {
+    font-size: 12vw;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+}
+
+.front-lower {
+    position: absolute;
+    bottom: 5vh;
+    right: 1vw;
+    background-color: rgba(256, 256, 256, 0.8);
+}
+
+#time {
+    font-size: 10vw;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: right;
+}
+
+#location {
+    font-size: 8vw;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: right;
+}
+
+#address {
+    font-size: 8vw;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: right;
+}
+
+.item {
+width: 94vw;
+padding: 2vh 2vw;
+}
+
+.performer {
+text-align: center;
+line-height: 1.2;
+font-size: 10vw;
+font-family: Arial, Helvetica, sans-serif;
+font-weight: bold;
+}
+
+.pieces {
+line-height: 1.2;
+font-size: 7vw;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+padding: 1vh 1vw;
+}
+
+.piece {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.title-block {
+flex: 1;
+}
+
+.composer-block {
+flex: 1;
+}
+
+.title {
+text-align: left;
+}
+
+.indent-title {
+text-align: left;
+text-indent: 8vw;
+}
+
+.composer {
+text-align: right;
+}

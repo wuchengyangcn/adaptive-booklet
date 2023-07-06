@@ -32,10 +32,17 @@ Copyright (C) 2023 musicnbrain.org
 ```
 ├── app.py
 ├── static
-│   └── data.json
+│   ├── data.json
+│   ├── desktop.css
+│   ├── mobile.css
+│   └── turn.js
 └── templates
-    ├── front.html
-    └── content.html
+    ├── content_desktop.html
+    ├── content_mobile.html
+    ├── desktop.html
+    ├── front_desktop.html
+    ├── front_mobile.html
+    └── mobile.html
 ```
 
 ### Run
